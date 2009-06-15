@@ -54,9 +54,20 @@ if ( $Authenticated )
 
     setcookie('CS_MAIL_HASH',$Hash,$ExpiresCookie,'/');
     
+    switch ( $INI->variable('CSMailCheck', 'FetchType') ) {
+    	case 'date':
+    		  $messages = $imap->getNewMessagesID( 1, $INI->variable('CSMailCheck', 'MessageCount'), "Date", true );
+    		break;	
+    		
+    	case 'unseen':
+    		  $messages = $imap->getUnseenMessages( $INI->variable('CSMailCheck', 'MessageCount') );
+    		break;
     
-    $messages = $imap->getNewMessagesID( 1, $INI->variable('CSMailCheck', 'MessageCount'), "Date", true );
-        
+    	default:
+    	      $messages = array();
+    		break;
+    }
+     
     $mails = array();
     $parser = new ezcMailParser();        
     foreach ($messages as $msgid)

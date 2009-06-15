@@ -60,6 +60,14 @@ class csMailImapTransport extends  ezcMailImapTransport
 
        return $range;
     }
+    
+    public function getUnseenMessages( $count = 0 )
+    {
+       $messages = $this->searchByFlag( 'UNSEEN' );       
+       krsort($messages);        
+       $messages = array_slice($messages,0,$count);        
+       return $messages;
+    }
 }
 
 ?>

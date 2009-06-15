@@ -44,7 +44,19 @@ if ( $Mail instanceof CSMailCheck && $Mail->verifyHash() )
     {
         $imap->selectMailbox( 'Inbox' );
         
-        $messages = $imap->getNewMessagesID( 1, $INI->variable('CSMailCheck', 'MessageCount'), "Date", true );
+        switch ( $INI->variable('CSMailCheck', 'FetchType') ) {
+    	case 'date':
+    		  $messages = $imap->getNewMessagesID( 1, $INI->variable('CSMailCheck', 'MessageCount'), "Date", true );
+    		break;	
+    		
+    	case 'unseen':
+    		  $messages = $imap->getUnseenMessages( $INI->variable('CSMailCheck', 'MessageCount') );
+    		break;
+    
+    	default:
+    	      $messages = array();
+    		break;
+        }
         
         $mails = array();
         $parser = new ezcMailParser();        

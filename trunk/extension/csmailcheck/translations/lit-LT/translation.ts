@@ -32,6 +32,10 @@
         <translation>Žinutės</translation>
     </message> 
     <message>
+        <source>Empty...</source>
+        <translation>Tuščia...</translation>
+    </message> 
+    <message>
         <source>Logout</source>
         <translation>Atsijungti</translation>
     </message>   

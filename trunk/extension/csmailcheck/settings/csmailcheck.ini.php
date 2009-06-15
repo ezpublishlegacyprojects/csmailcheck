@@ -14,6 +14,11 @@ MessageCount=5
 ImapServers[]
 ImapServers[localhost]=Server name
 
+# Fetch type
+# date - fetch newest messages by date
+# unseen - fetch messages marked as unseen
+FetchType=unseen
+
 # Only show inbox content without links to webmail client. Also no javascript is sended to backed
 WebmailClient=disabled
 
