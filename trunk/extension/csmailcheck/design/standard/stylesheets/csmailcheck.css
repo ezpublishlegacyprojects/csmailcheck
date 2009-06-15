@@ -1,0 +1,16 @@
+ul.csmail-list li
+{
+    margin-left:0;
+    font-size: 0.85em;
+    padding-top:3px;
+    padding-bottom:3px;
+    line-height:110%;
+    border-bottom:1px solid #D9F1FD;
+    
+}
+
+ul.csmail-list
+{
+    margin-left:0;
+    padding-left:0;
+}
